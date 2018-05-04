@@ -48,6 +48,16 @@ function drawAll() {
   // clearScreen();
   drawTracks();
   warrior.draw();
+
   colorText("Keys: ", 10, canvas.height-10, 'blue');
-  colorText(warrior.keysHeld, 30, canvas.height-10, 'blue')
+  colorText(warrior.keysHeld, 30, canvas.height-10, 'blue');
+
+
+  // if (warrior.keyHeld_Action) {
+  //   speech_ready = true;
+  // }
+  speechAction(speech_text);
+
+
+
 }

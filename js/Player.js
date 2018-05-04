@@ -1,5 +1,8 @@
 // const GROUNDSPEED_DECAY_MULT = 0.94;
 const PLAYER_MOVE_SPEED = 5;
+let speech_ready = false;
+let speech_on = false;
+let speech_text = '';
 
 class Player {
   constructor() {
@@ -13,20 +16,25 @@ class Player {
     this.keyHeld_Left = false;
     this.keyHeld_Right = false;
 
+    this.keyHeld_Action = false;
+
     this.controlKeyUp;
     this.controlKeyRight;
     this.controlKeyDown;
     this.controlKeyLeft;
+    this.controlAction;
 
     this.keysHeld = 0;
 
   } // Constructor End
 
-  setupInput(upKey, rightKey, downKey, leftKey) {
+  setupInput(upKey, rightKey, downKey, leftKey, actionKey) {
     this.controlKeyUp = upKey;
     this.controlKeyRight = rightKey;
     this.controlKeyDown = downKey;
     this.controlKeyLeft = leftKey;
+
+    this.controlAction = actionKey;
   }
 
   reset(whichImage, playerName) {
@@ -99,6 +107,7 @@ class Player {
 				worldGrid[walkIntoTileIndex] = WORLD_GROUND;
 				break;
 			case WORLD_WALL:
+        speech_ready = false; // DEBUGING PURPOSE
         break;
       case WORLD_NAVIGATION:
         loadLevel(levelList[levelNow]);
@@ -107,6 +116,12 @@ class Player {
         } else {
           levelNow += 1;
         }
+        break;
+      case WORLD_BOOK:
+        // console.log("this is a book!");
+        speechReady('book');
+
+        break;
 			default:
 				break;
 		}
@@ -120,4 +135,35 @@ class Player {
     drawBitmapCenteredWithRotation(this.PlayerAvatar, this.x, this.y, 0);
   }
 
+}
+function speechReady(item_info) {
+  let speech01 = 'Where am I...? I am lost';
+
+
+  if (item_info == 'book') {
+    console.log("speech_ready = true", item_info);
+    speech_text = speech01
+    speech_ready = true;
+  }
+
+}
+
+function speechAction(speech_text) {
+  if (speech_on && speech_ready && !warrior.keyHeld_Action) {
+    console.log(warrior.keyHeld_Action);
+    speech_ready = false;
+  }
+  if (speech_on && !speech_ready && warrior.keyHeld_Action) {
+    speech_on = false;
+  }
+
+  if (warrior.keyHeld_Action && speech_ready) {
+    console.log("speech_on = true");
+    speech_on = true;
+  }
+
+  if (speech_on) {
+    colorRect(0, 500, canvas.width, 300, 'black');
+    colorText(speech_text, 10, canvas.height-30, 'blue');
+  }
 }

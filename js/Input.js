@@ -3,6 +3,8 @@ const KEY_UP_ARROW = 38;
 const KEY_RIGHT_ARROW = 39;
 const KEY_DOWN_ARROW = 40;
 
+const KEY_SPACEBAR = 32;
+
 // const KEY_W = 87;
 // const KEY_A = 65;
 // const KEY_S = 83;
@@ -18,7 +20,7 @@ function setupInput() {
   document.addEventListener('keydown', keyPressed);
   document.addEventListener('keyup', keyReleased);
 
-  warrior.setupInput(KEY_UP_ARROW, KEY_RIGHT_ARROW, KEY_DOWN_ARROW, KEY_LEFT_ARROW);
+  warrior.setupInput(KEY_UP_ARROW, KEY_RIGHT_ARROW, KEY_DOWN_ARROW, KEY_LEFT_ARROW, KEY_SPACEBAR);
 }
 
 function updateMousePos(e) {
@@ -48,10 +50,14 @@ function keySet(keyEvent, player, setTo) {
   if (keyEvent.keyCode == player.controlKeyDown) {
     player.keyHeld_Down = setTo;
   }
+  if (keyEvent.keyCode == player.controlAction) {
+    player.keyHeld_Action = setTo;
+  }
 }
 
 function keyPressed(e) {
   keySet(e, warrior, true);
+  // console.log("Key Pressed:", e.keyCode);
   e.preventDefault();
 }
 
