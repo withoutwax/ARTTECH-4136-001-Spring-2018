@@ -164,6 +164,6 @@ function speechAction(speech_text) {
 
   if (speech_on) {
     colorRect(0, 500, canvas.width, 300, 'black');
-    colorText(speech_text, 10, canvas.height-30, 'blue');
+    dialogueText(speech_text, 50, canvas.height-40, 'blue');
   }
 }

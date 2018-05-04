@@ -5,6 +5,7 @@ let warrior = new Player();
 window.onload = function() {
   canvas = document.getElementById("gameCanvas");
   canvasContext = canvas.getContext('2d');
+  canvasContext.font = '24px serif';
 
   // IMAGE LOAD
   colorRect(0, 0, canvas.width, canvas.height, 'black');

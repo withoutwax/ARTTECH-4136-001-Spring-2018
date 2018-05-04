@@ -23,3 +23,8 @@ function colorText(showWords, textX, textY, fillColor) {
   canvasContext.fillStyle = fillColor;
   canvasContext.fillText(showWords, textX, textY);
 }
+
+function dialogueText(text, xPos, yPos, fillColor) {
+  canvasContext.fillStyle = fillColor;
+  canvasContext.fillText(text, xPos, yPos);
+}
