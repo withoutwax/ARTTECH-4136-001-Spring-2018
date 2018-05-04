@@ -109,12 +109,13 @@ class Player {
       case WORLD_NAVIGATION_00:
         for (let i = 0; i < worldGrid.length; i++) {
           if (worldGrid[i] == 9) {
-            worldGrid[i] == 2;
+            worldGrid[i] = 2;
           }
         }
+        // worldGrid[walkIntoTileIndex] = 2;
         level01_01 = worldGrid;
         loadLevel(level01_02);
-        console.log(worldGrid);
+        // console.log(worldGrid);
         break;
       case WORLD_NAVIGATION_00_R:
         loadLevel(level01_01);
