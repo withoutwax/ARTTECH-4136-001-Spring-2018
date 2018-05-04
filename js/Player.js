@@ -23,6 +23,8 @@ class Player {
 
     this.keysHeld = 0;
 
+    this.currentMap;
+
   } // Constructor End
 
   setupInput(upKey, rightKey, downKey, leftKey, actionKey) {
@@ -34,7 +36,7 @@ class Player {
     this.controlAction = actionKey;
   }
 
-  reset(whichImage, playerName, reset_status) {
+  reset(whichImage, playerName, tile_type, reset_status) {
     this.name = playerName;
     this.PlayerAvatar = whichImage;
     console.log(reset_status);
@@ -58,7 +60,7 @@ class Player {
         for(let eachCol = 0; eachCol < WORLD_COLS; eachCol++) {
 
           let arrayIndex = rowColToArrayIndex(eachCol, eachRow);
-          if (worldGrid[arrayIndex] == PLAYER_MAP_NAV) { // Start player at map = '2'
+          if (worldGrid[arrayIndex] == tile_type+1) { // Start player at map = '100'
             // worldGrid[arrayIndex] = WORLD_GROUND;
 
             this.x = eachCol * WORLD_W + WORLD_W/2;
@@ -103,7 +105,7 @@ class Player {
 				this.x = nextX;
 				this.y = nextY;
 				break;
-      case PLAYER_MAP_NAV:
+      case WORLD_NAVIGATION_00_R:
 				this.x = nextX;
 				this.y = nextY;
 				break;
@@ -128,27 +130,32 @@ class Player {
 			case WORLD_WALL:
         speech_ready = false; // DEBUGING PURPOSE
         break;
-      case WORLD_NAVIGATION_00:
-        // for (let i = 0; i < worldGrid.length; i++) {
-        //   if (worldGrid[i] == 9) {
-        //     worldGrid[i] = 2;
-        //   }
-        // }
-        // worldGrid[walkIntoTileIndex] = 2;
-        level01_01 = worldGrid;
-        loadLevel(level01_02, 'nav');
-        // console.log(worldGrid);
-        break;
-      case WORLD_NAVIGATION_00_R:
-        loadLevel(level01_01, 'nav');
-      // case WORLD_INFO:
-      //   // console.log("this is a book!");
-      //   speechReady('book');
-      //
-      //   break;
+
 			default:
 				break;
 		}
+
+    // FOR MAP NAVIGATION
+    switch(walkIntoTileType) {
+      case WORLD_NAVIGATION_00:
+        console.log(walkIntoTileType);
+
+        if (this.currentMap == 'level01_01') {
+          level01_01 = worldGrid;
+          this.currentMap = 'level01_02';
+          loadLevel(level01_02, walkIntoTileType, 'nav');
+        } else if (this.currentMap == 'level01_02') {
+          level01_02 = worldGrid;
+          this.currentMap = 'level01_01';
+          loadLevel(level01_01, walkIntoTileType, 'nav');
+        }
+        break;
+      // case WORLD_NAVIGATION_00_R:
+      //   loadLevel(level01_01, 'nav');
+      //   break;
+      default:
+				break;
+    }
 
     // For dialogue
     switch(walkIntoTileType) {
@@ -164,13 +171,8 @@ class Player {
       default:
         break;
     }
-
-
-    // playerHandling(this);
-    // this.x += this.speedX;
-    // this.y += this.speedY;
-    // this.ang += 0.02;
   }
+
   draw() {
     drawBitmapCenteredWithRotation(this.PlayerAvatar, this.x, this.y, 0);
   }

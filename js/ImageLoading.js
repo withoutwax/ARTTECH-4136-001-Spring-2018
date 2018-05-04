@@ -38,8 +38,8 @@ function loadImages() {
     {trackType: WORLD_DOOR, theFile: "world_door.png"},
 
     // NAVIGATING SCENES & PLACES
-    {trackType: PLAYER_MAP_NAV, theFile: "world_ground.png"},
-    
+    // {trackType: PLAYER_MAP_NAV, theFile: "world_ground.png"},
+
     {trackType: WORLD_NAVIGATION_00, theFile: "world_ground.png"},
     {trackType: WORLD_NAVIGATION_00_R, theFile: "world_ground.png"},
 
