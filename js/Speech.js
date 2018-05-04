@@ -5,6 +5,7 @@ let speech_text = '';
 function speechReady(item_info) {
   let speech01 = 'Where am I...? I am lost';
   let speech02 = 'I need to get out of here';
+  let speech03 = 'What is this place...?';
 
   switch(item_info) {
     case "world_01_info_01":
@@ -13,16 +14,18 @@ function speechReady(item_info) {
       speech_ready = true;
       break;
     case "world_01_info_02":
-      console.log("speech_ready = true", item_info);
+      // console.log("speech_ready = true", item_info);
       speech_text = speech02;
       speech_ready = true;
+      break;
+    case "world_01_info_03":
+      // console.log("speech_ready = true", item_info);
+      speech_text = speech03;
+      speech_ready = true;
+      break;
     default:
       break;
   }
-  // if (item_info == 'world_01_info_01') {
-  //
-  // }
-
 }
 
 function speechAction(speech_text) {
