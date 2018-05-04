@@ -114,14 +114,27 @@ class Player {
           levelNow += 1;
         }
         break;
-      case WORLD_INFO:
-        // console.log("this is a book!");
-        speechReady('book');
-
-        break;
+      // case WORLD_INFO:
+      //   // console.log("this is a book!");
+      //   speechReady('book');
+      //
+      //   break;
 			default:
 				break;
 		}
+
+    // For dialogue
+    switch(walkIntoTileType) {
+      case WORLD_INFO_01:
+        speechReady('world_01_info_01');
+        break;
+      case WORLD_INFO_02:
+        speechReady('world_01_info_02');
+        break;
+      default:
+        break;
+    }
+
 
     // playerHandling(this);
     // this.x += this.speedX;
@@ -130,17 +143,6 @@ class Player {
   }
   draw() {
     drawBitmapCenteredWithRotation(this.PlayerAvatar, this.x, this.y, 0);
-  }
-
-}
-function speechReady(item_info) {
-  let speech01 = 'Where am I...? I am lost';
-
-
-  if (item_info == 'book') {
-    console.log("speech_ready = true", item_info);
-    speech_text = speech01
-    speech_ready = true;
   }
 
 }

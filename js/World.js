@@ -40,7 +40,7 @@ var level01_01 =  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 									 1, 7, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1,
 									 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1,
 									 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1,
-									 1, 0, 0, 5, 0, 0, 7, 0, 0, 0, 0, 0, 0, 1, 1, 1,
+									 1, 0, 0, 5, 0, 0, 8, 0, 0, 0, 0, 0, 0, 1, 1, 1,
 									 1, 0, 2, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1,
 									 1, 1, 1, 1, 6, 6, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,// ROW END
 									 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
@@ -58,7 +58,10 @@ const WORLD_GOAL = 3;
 const WORLD_KEY = 4;
 const WORLD_DOOR = 5;
 const WORLD_NAVIGATION = 6;
-const WORLD_INFO = 7;
+
+// WORLD_INFORMATION
+const WORLD_INFO_01 = 7;
+const WORLD_INFO_02 = 8;
 
 
 function returnTileTypeAtColRow(col, row) {

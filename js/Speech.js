@@ -2,6 +2,29 @@ let speech_ready = false;
 let speech_on = false;
 let speech_text = '';
 
+function speechReady(item_info) {
+  let speech01 = 'Where am I...? I am lost';
+  let speech02 = 'I need to get out of here';
+
+  switch(item_info) {
+    case "world_01_info_01":
+      console.log("speech_ready = true", item_info);
+      speech_text = speech01;
+      speech_ready = true;
+      break;
+    case "world_01_info_02":
+      console.log("speech_ready = true", item_info);
+      speech_text = speech02;
+      speech_ready = true;
+    default:
+      break;
+  }
+  // if (item_info == 'world_01_info_01') {
+  //
+  // }
+
+}
+
 function speechAction(speech_text) {
   if (speech_on && speech_ready && !warrior.keyHeld_Action) {
     console.log(warrior.keyHeld_Action);
@@ -18,6 +41,6 @@ function speechAction(speech_text) {
 
   if (speech_on) {
     colorRect(0, 500, canvas.width, 300, 'black');
-    dialogueText(speech_text, 50, canvas.height-40, 'blue');
+    dialogueText(speech_text, 50, canvas.height-40, 'white');
   }
 }

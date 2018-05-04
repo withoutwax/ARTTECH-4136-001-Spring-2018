@@ -37,7 +37,10 @@ function loadImages() {
     {trackType: WORLD_KEY, theFile: "world_key.png"},
     {trackType: WORLD_DOOR, theFile: "world_door.png"},
     {trackType: WORLD_NAVIGATION, theFile: "world_ground.png"},
-    {trackType: WORLD_INFO, theFile: "world_info.png"}
+
+    // DIALOGUE
+    {trackType: WORLD_INFO_01, theFile: "world_info.png"},
+    {trackType: WORLD_INFO_02, theFile: "world_info.png"},
   ];
 
   picsToLoad = imageList.length;
