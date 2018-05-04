@@ -20,13 +20,13 @@ function imageLoadingDoneSoStartGame() {
   setInterval(updateAll, 1000/framesPerSecond);
   setupInput();
 
-  loadLevel(level01_01);
+  loadLevel(level01_01, 'init');
 }
 
-function loadLevel(whichLevel) {
+function loadLevel(whichLevel, reset_status) {
   worldGrid = whichLevel.slice();
   console.log("Created new map");
-  warrior.reset(playerAvatar, "Blue Storm");
+  warrior.reset(playerAvatar, "Blue Storm", reset_status);
   console.log("Placed Player!")
 
 }

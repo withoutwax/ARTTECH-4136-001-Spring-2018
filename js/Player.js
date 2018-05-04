@@ -34,23 +34,41 @@ class Player {
     this.controlAction = actionKey;
   }
 
-  reset(whichImage, playerName) {
+  reset(whichImage, playerName, reset_status) {
     this.name = playerName;
     this.PlayerAvatar = whichImage;
+    console.log(reset_status);
 
-    for(let eachRow = 0; eachRow < WORLD_ROWS; eachRow++) {
-      for(let eachCol = 0; eachCol < WORLD_COLS; eachCol++) {
+    if (reset_status == "init") { // If the reset function is for starting a new game
+      for(let eachRow = 0; eachRow < WORLD_ROWS; eachRow++) {
+        for(let eachCol = 0; eachCol < WORLD_COLS; eachCol++) {
 
-        let arrayIndex = rowColToArrayIndex(eachCol, eachRow);
-        if (worldGrid[arrayIndex] == PLAYER_START_POSITION) {
-          worldGrid[arrayIndex] = WORLD_GROUND;
-          // this.ang = -Math.PI/2;
-          this.x = eachCol * WORLD_W + WORLD_W/2;
-          this.y = eachRow * WORLD_H + WORLD_H/2;
-          return;
+          let arrayIndex = rowColToArrayIndex(eachCol, eachRow);
+          if (worldGrid[arrayIndex] == PLAYER_START_POSITION) { // Start player at map = '2'
+            worldGrid[arrayIndex] = WORLD_GROUND;
+
+            this.x = eachCol * WORLD_W + WORLD_W/2;
+            this.y = eachRow * WORLD_H + WORLD_H/2;
+            return;
+          }
+        }
+      }
+    } else if (reset_status == 'nav') { // If the reset function is just for navigation (map change)
+      for(let eachRow = 0; eachRow < WORLD_ROWS; eachRow++) {
+        for(let eachCol = 0; eachCol < WORLD_COLS; eachCol++) {
+
+          let arrayIndex = rowColToArrayIndex(eachCol, eachRow);
+          if (worldGrid[arrayIndex] == PLAYER_MAP_NAV) { // Start player at map = '2'
+            // worldGrid[arrayIndex] = WORLD_GROUND;
+
+            this.x = eachCol * WORLD_W + WORLD_W/2;
+            this.y = eachRow * WORLD_H + WORLD_H/2;
+            return;
+          }
         }
       }
     }
+
     console.log("NO PLAYER START FOUND");
   }
 
@@ -85,6 +103,10 @@ class Player {
 				this.x = nextX;
 				this.y = nextY;
 				break;
+      case PLAYER_MAP_NAV:
+				this.x = nextX;
+				this.y = nextY;
+				break;
 			case WORLD_GOAL:
 				console.log(this.name + " WINS!");
 				// loadLevel(level01_01);
@@ -107,18 +129,18 @@ class Player {
         speech_ready = false; // DEBUGING PURPOSE
         break;
       case WORLD_NAVIGATION_00:
-        for (let i = 0; i < worldGrid.length; i++) {
-          if (worldGrid[i] == 9) {
-            worldGrid[i] = 2;
-          }
-        }
+        // for (let i = 0; i < worldGrid.length; i++) {
+        //   if (worldGrid[i] == 9) {
+        //     worldGrid[i] = 2;
+        //   }
+        // }
         // worldGrid[walkIntoTileIndex] = 2;
         level01_01 = worldGrid;
-        loadLevel(level01_02);
+        loadLevel(level01_02, 'nav');
         // console.log(worldGrid);
         break;
       case WORLD_NAVIGATION_00_R:
-        loadLevel(level01_01);
+        loadLevel(level01_01, 'nav');
       // case WORLD_INFO:
       //   // console.log("this is a book!");
       //   speechReady('book');
