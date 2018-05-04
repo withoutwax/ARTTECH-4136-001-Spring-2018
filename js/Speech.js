@@ -23,6 +23,7 @@ function speechReady(item_info) {
       speech_text = speech03;
       speech_ready = true;
       break;
+      
     default:
       break;
   }

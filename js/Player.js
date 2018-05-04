@@ -60,7 +60,7 @@ class Player {
         for(let eachCol = 0; eachCol < WORLD_COLS; eachCol++) {
 
           let arrayIndex = rowColToArrayIndex(eachCol, eachRow);
-          if (worldGrid[arrayIndex] == tile_type+1) { // Start player at map = '100'
+          if (worldGrid[arrayIndex] == tile_type+0.5) { // Start player at map = '100'
             // worldGrid[arrayIndex] = WORLD_GROUND;
 
             this.x = eachCol * WORLD_W + WORLD_W/2;
@@ -109,6 +109,14 @@ class Player {
 				this.x = nextX;
 				this.y = nextY;
 				break;
+      case WORLD_NAVIGATION_01_R:
+				this.x = nextX;
+				this.y = nextY;
+				break;
+      case WORLD_NAVIGATION_02_R:
+				this.x = nextX;
+				this.y = nextY;
+				break;
 			case WORLD_GOAL:
 				console.log(this.name + " WINS!");
 				// loadLevel(level01_01);
@@ -150,9 +158,35 @@ class Player {
           loadLevel(level01_01, walkIntoTileType, 'nav');
         }
         break;
-      // case WORLD_NAVIGATION_00_R:
-      //   loadLevel(level01_01, 'nav');
-      //   break;
+
+      case WORLD_NAVIGATION_01:
+        console.log(walkIntoTileType);
+
+        if (this.currentMap == 'level01_02') {
+          level01_02 = worldGrid;
+          this.currentMap = 'level01_03';
+          loadLevel(level01_03, walkIntoTileType, 'nav');
+        } else if (this.currentMap == 'level01_03') {
+          level01_03 = worldGrid;
+          this.currentMap = 'level01_02';
+          loadLevel(level01_02, walkIntoTileType, 'nav');
+        }
+        break;
+
+      case WORLD_NAVIGATION_02:
+        console.log(walkIntoTileType);
+
+        if (this.currentMap == 'level01_02') {
+          level01_02 = worldGrid;
+          this.currentMap = 'level01_04';
+          loadLevel(level01_04, walkIntoTileType, 'nav');
+        } else if (this.currentMap == 'level01_04') {
+          level01_04 = worldGrid;
+          this.currentMap = 'level01_02';
+          loadLevel(level01_02, walkIntoTileType, 'nav');
+        }
+        break;
+
       default:
 				break;
     }
