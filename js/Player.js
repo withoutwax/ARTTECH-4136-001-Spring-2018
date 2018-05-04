@@ -1,8 +1,5 @@
 // const GROUNDSPEED_DECAY_MULT = 0.94;
 const PLAYER_MOVE_SPEED = 5;
-let speech_ready = false;
-let speech_on = false;
-let speech_text = '';
 
 class Player {
   constructor() {
@@ -109,22 +106,43 @@ class Player {
 			case WORLD_WALL:
         speech_ready = false; // DEBUGING PURPOSE
         break;
-      case WORLD_NAVIGATION:
-        loadLevel(levelList[levelNow]);
-        if (levelNow == levelList.length-1) {
-          levelNow = 0
-        } else {
-          levelNow += 1;
+      case WORLD_NAVIGATION_00:
+        for (let i = 0; i < worldGrid.length; i++) {
+          if (worldGrid[i] == 9) {
+            worldGrid[i] = 2;
+          }
         }
+        // worldGrid[walkIntoTileIndex] = 2;
+        level01_01 = worldGrid;
+        loadLevel(level01_02);
+        // console.log(worldGrid);
         break;
-      case WORLD_BOOK:
-        // console.log("this is a book!");
-        speechReady('book');
-
-        break;
+      case WORLD_NAVIGATION_00_R:
+        loadLevel(level01_01);
+      // case WORLD_INFO:
+      //   // console.log("this is a book!");
+      //   speechReady('book');
+      //
+      //   break;
 			default:
 				break;
 		}
+
+    // For dialogue
+    switch(walkIntoTileType) {
+      case WORLD_INFO_01:
+        speechReady('world_01_info_01');
+        break;
+      case WORLD_INFO_02:
+        speechReady('world_01_info_02');
+        break;
+      case WORLD_INFO_03:
+        speechReady('world_01_info_03');
+        break;
+      default:
+        break;
+    }
+
 
     // playerHandling(this);
     // this.x += this.speedX;
@@ -135,35 +153,4 @@ class Player {
     drawBitmapCenteredWithRotation(this.PlayerAvatar, this.x, this.y, 0);
   }
 
-}
-function speechReady(item_info) {
-  let speech01 = 'Where am I...? I am lost';
-
-
-  if (item_info == 'book') {
-    console.log("speech_ready = true", item_info);
-    speech_text = speech01
-    speech_ready = true;
-  }
-
-}
-
-function speechAction(speech_text) {
-  if (speech_on && speech_ready && !warrior.keyHeld_Action) {
-    console.log(warrior.keyHeld_Action);
-    speech_ready = false;
-  }
-  if (speech_on && !speech_ready && warrior.keyHeld_Action) {
-    speech_on = false;
-  }
-
-  if (warrior.keyHeld_Action && speech_ready) {
-    console.log("speech_on = true");
-    speech_on = true;
-  }
-
-  if (speech_on) {
-    colorRect(0, 500, canvas.width, 300, 'black');
-    dialogueText(speech_text, 50, canvas.height-40, 'blue');
-  }
 }
