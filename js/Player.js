@@ -16,6 +16,7 @@ class Player {
     this.keyHeld_Action = false;
 
     this.keyCheatKey = false;
+    this.keyCheatExit = false;
 
     this.controlKeyUp;
     this.controlKeyRight;
@@ -24,6 +25,7 @@ class Player {
     this.controlAction;
 
     this.controlCheatKey;
+    this.controlCheatKey02;
 
     this.keysHeld = 0;
 
@@ -31,7 +33,7 @@ class Player {
 
   } // Constructor End
 
-  setupInput(upKey, rightKey, downKey, leftKey, actionKey, cheatKey) {
+  setupInput(upKey, rightKey, downKey, leftKey, actionKey, cheatKey, cheatKey02) {
     this.controlKeyUp = upKey;
     this.controlKeyRight = rightKey;
     this.controlKeyDown = downKey;
@@ -40,6 +42,7 @@ class Player {
     this.controlAction = actionKey;
 
     this.controlCheatKey = cheatKey;
+    this.controlCheatKey02 = cheatKey02;
   }
 
   reset(whichImage, playerName, tile_type, reset_status) {
@@ -245,8 +248,29 @@ class Player {
       case WORLD_INFO_03:
         speechReady('world_01_info_03');
         break;
-      case SCROLL_RED:
-        speechReady('scroll_red_info_01');
+      case WORLD_INFO_04:
+        speechReady('world_01_info_04');
+        break;
+      case WORLD_INFO_05:
+        speechReady('world_01_info_05');
+        break;
+      case WORLD_INFO_06:
+        speechReady('world_01_info_06');
+        break;
+      case WORLD_INFO_07:
+        speechReady('world_01_info_07');
+        break;
+      case WORLD_INFO_08:
+        speechReady('world_01_info_08');
+        break;
+      case WORLD_INFO_09:
+        speechReady('world_01_info_09');
+        break;
+      case WORLD_INFO_10:
+        speechReady('world_01_info_10');
+        break;
+      case STATUE_IRON:
+        speechReady('statue_iron');
         break;
       default:
         break;
