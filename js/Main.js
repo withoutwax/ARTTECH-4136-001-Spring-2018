@@ -2,6 +2,7 @@ let canvas, canvasContext;
 
 let warrior = new Player();
 
+let game_over = false;
 let cheatMode = false;
 
 window.onload = function() {
@@ -66,6 +67,14 @@ function drawAll() {
   // }
   speechAction(speech_text);
 
+  if (game_over) {
+    gameOver();
+  }
 
+}
+
+function gameOver() {
+  colorRect(0, 0, canvas.width, canvas.height, 'black');
+  colorText("Prologue Complete... Chapter 01 coming soon...", canvas.width/2-250, canvas.height/2, 'white');
 
 }

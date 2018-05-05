@@ -64,6 +64,8 @@ function loadImages() {
     {trackType: WORLD_NAVIGATION_04, theFile: "world_ground.png"},
     {trackType: WORLD_NAVIGATION_04_R, theFile: "world_ground.png"},
 
+    {trackType: WORLD_NAVIGATION_05, theFile: "dirt_g.png"},
+
     // DIALOGUE
     {trackType: WORLD_INFO_01, theFile: "world_info.png"},
     {trackType: WORLD_INFO_02, theFile: "world_info.png"},

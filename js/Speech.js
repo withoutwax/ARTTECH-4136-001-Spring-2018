@@ -69,6 +69,7 @@ function speechReady(item_info) {
       break;
     case "statue_iron":
       // console.log("speech_ready = true", item_info);
+      level01_03 = level01_03_EXIT;
       speech_text = statue_iron;
       speech_ready = true;
       break;

@@ -139,6 +139,15 @@ class Player {
 				this.x = nextX;
 				this.y = nextY;
 				break;
+      case GROUND_GRASS:
+				this.x = nextX;
+				this.y = nextY;
+				break;
+      case GROUND_DIRT:
+				this.x = nextX;
+				this.y = nextY;
+				break;
+
 			case WORLD_GOAL:
 				console.log(this.name + " WINS!");
 				// loadLevel(level01_01);
@@ -231,6 +240,10 @@ class Player {
           this.currentMap = 'level01_06';
           loadLevel(level01_06, walkIntoTileType, 'nav');
         }
+        break;
+      case WORLD_NAVIGATION_05:
+        console.log('GAME OVER');
+        game_over = true;
         break;
 
       default:

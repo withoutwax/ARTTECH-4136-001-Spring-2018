@@ -13,10 +13,6 @@ const CHEAT_KEY02 = 221;
 // const KEY_S = 83;
 // const KEY_D = 68;
 
-
-let mouseX = 0;
-let mouseY = 0;
-
 function setupInput() {
   canvas.addEventListener('mousemove', updateMousePos);
 
@@ -63,7 +59,8 @@ function keySet(keyEvent, player, setTo) {
   }
   if (keyEvent.keyCode == player.controlCheatKey02) {
     console.log('Exit Cheat Mode');
-    loadLevel(level01_03_EXIT, 100, 'nav');
+    // loadLevel(level01_03_EXIT, 100, 'nav');
+    level01_03 = level01_03_EXIT;
     player.keyCheatExit = setTo;
   }
 }
