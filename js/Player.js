@@ -15,11 +15,15 @@ class Player {
 
     this.keyHeld_Action = false;
 
+    this.keyCheatKey = false;
+
     this.controlKeyUp;
     this.controlKeyRight;
     this.controlKeyDown;
     this.controlKeyLeft;
     this.controlAction;
+
+    this.controlCheatKey;
 
     this.keysHeld = 0;
 
@@ -27,13 +31,15 @@ class Player {
 
   } // Constructor End
 
-  setupInput(upKey, rightKey, downKey, leftKey, actionKey) {
+  setupInput(upKey, rightKey, downKey, leftKey, actionKey, cheatKey) {
     this.controlKeyUp = upKey;
     this.controlKeyRight = rightKey;
     this.controlKeyDown = downKey;
     this.controlKeyLeft = leftKey;
 
     this.controlAction = actionKey;
+
+    this.controlCheatKey = cheatKey;
   }
 
   reset(whichImage, playerName, tile_type, reset_status) {
@@ -92,6 +98,11 @@ class Player {
       nextX += PLAYER_MOVE_SPEED;
     }
 
+    // CHEAT
+    if (this.controlCheatKey) {
+      this.keysHeld = 9999;
+    }
+
     var walkIntoTileIndex = getTileIndexAtPixelCoord(nextX, nextY);
     // console.log(walkIntoTileIndex);
     var walkIntoTileType = WORLD_WALL;
@@ -114,6 +125,10 @@ class Player {
 				this.y = nextY;
 				break;
       case WORLD_NAVIGATION_02_R:
+				this.x = nextX;
+				this.y = nextY;
+				break;
+      case WORLD_NAVIGATION_03_R:
 				this.x = nextX;
 				this.y = nextY;
 				break;
