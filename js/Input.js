@@ -5,14 +5,13 @@ const KEY_DOWN_ARROW = 40;
 
 const KEY_SPACEBAR = 32;
 
+const CHEAT_KEY = 220;
+const CHEAT_KEY02 = 221;
+
 // const KEY_W = 87;
 // const KEY_A = 65;
 // const KEY_S = 83;
 // const KEY_D = 68;
-
-
-let mouseX = 0;
-let mouseY = 0;
 
 function setupInput() {
   canvas.addEventListener('mousemove', updateMousePos);
@@ -20,7 +19,7 @@ function setupInput() {
   document.addEventListener('keydown', keyPressed);
   document.addEventListener('keyup', keyReleased);
 
-  warrior.setupInput(KEY_UP_ARROW, KEY_RIGHT_ARROW, KEY_DOWN_ARROW, KEY_LEFT_ARROW, KEY_SPACEBAR);
+  warrior.setupInput(KEY_UP_ARROW, KEY_RIGHT_ARROW, KEY_DOWN_ARROW, KEY_LEFT_ARROW, KEY_SPACEBAR, CHEAT_KEY, CHEAT_KEY02);
 }
 
 function updateMousePos(e) {
@@ -52,6 +51,17 @@ function keySet(keyEvent, player, setTo) {
   }
   if (keyEvent.keyCode == player.controlAction) {
     player.keyHeld_Action = setTo;
+  }
+
+  // CHEAT KEY
+  if (keyEvent.keyCode == player.controlCheatKey) {
+    player.keyCheatKey = setTo;
+  }
+  if (keyEvent.keyCode == player.controlCheatKey02) {
+    console.log('Exit Cheat Mode');
+    // loadLevel(level01_03_EXIT, 100, 'nav');
+    level01_03 = level01_03_EXIT;
+    player.keyCheatExit = setTo;
   }
 }
 
