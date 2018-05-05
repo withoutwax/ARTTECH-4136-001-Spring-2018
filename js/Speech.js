@@ -7,6 +7,8 @@ function speechReady(item_info) {
   let speech02 = 'I need to get out of here';
   let speech03 = 'What is this place...?';
 
+  let scroll_01 = 'Now find an exit and go...!';
+
   switch(item_info) {
     case "world_01_info_01":
       console.log("speech_ready = true", item_info);
@@ -23,7 +25,12 @@ function speechReady(item_info) {
       speech_text = speech03;
       speech_ready = true;
       break;
-      
+    case "scroll_red_info_01":
+      // console.log("speech_ready = true", item_info);
+      speech_text = scroll_01;
+      speech_ready = true;
+      break;
+
     default:
       break;
   }

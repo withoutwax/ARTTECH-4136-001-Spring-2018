@@ -36,6 +36,7 @@ function loadImages() {
     {trackType: WORLD_GOAL, theFile: "world_goal.png"},
     {trackType: WORLD_KEY, theFile: "world_key.png"},
     {trackType: WORLD_DOOR, theFile: "world_door.png"},
+    {trackType: SCROLL_RED, theFile: "scroll_red.png"},
 
     // NAVIGATING SCENES & PLACES
     // {trackType: PLAYER_MAP_NAV, theFile: "world_ground.png"},
@@ -48,6 +49,8 @@ function loadImages() {
     {trackType: WORLD_NAVIGATION_02_R, theFile: "world_ground.png"},
     {trackType: WORLD_NAVIGATION_03, theFile: "world_ground.png"},
     {trackType: WORLD_NAVIGATION_03_R, theFile: "world_ground.png"},
+    {trackType: WORLD_NAVIGATION_04, theFile: "world_ground.png"},
+    {trackType: WORLD_NAVIGATION_04_R, theFile: "world_ground.png"},
 
     // DIALOGUE
     {trackType: WORLD_INFO_01, theFile: "world_info.png"},

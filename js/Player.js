@@ -132,6 +132,10 @@ class Player {
 				this.x = nextX;
 				this.y = nextY;
 				break;
+      case WORLD_NAVIGATION_04_R:
+				this.x = nextX;
+				this.y = nextY;
+				break;
 			case WORLD_GOAL:
 				console.log(this.name + " WINS!");
 				// loadLevel(level01_01);
@@ -173,7 +177,6 @@ class Player {
           loadLevel(level01_01, walkIntoTileType, 'nav');
         }
         break;
-
       case WORLD_NAVIGATION_01:
         console.log(walkIntoTileType);
 
@@ -187,7 +190,6 @@ class Player {
           loadLevel(level01_02, walkIntoTileType, 'nav');
         }
         break;
-
       case WORLD_NAVIGATION_02:
         console.log(walkIntoTileType);
 
@@ -214,6 +216,19 @@ class Player {
           loadLevel(level01_02, walkIntoTileType, 'nav');
         }
         break;
+      case WORLD_NAVIGATION_04:
+        console.log(walkIntoTileType);
+
+        if (this.currentMap == 'level01_06') {
+          level01_06 = worldGrid;
+          this.currentMap = 'level01_05';
+          loadLevel(level01_05, walkIntoTileType, 'nav');
+        } else if (this.currentMap == 'level01_05') {
+          level01_05 = worldGrid;
+          this.currentMap = 'level01_06';
+          loadLevel(level01_06, walkIntoTileType, 'nav');
+        }
+        break;
 
       default:
 				break;
@@ -229,6 +244,9 @@ class Player {
         break;
       case WORLD_INFO_03:
         speechReady('world_01_info_03');
+        break;
+      case SCROLL_RED:
+        speechReady('scroll_red_info_01');
         break;
       default:
         break;
