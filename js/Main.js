@@ -54,8 +54,9 @@ function drawAll() {
   drawTracks();
   warrior.draw();
 
-  colorText("Keys: ", 10, canvas.height-10, 'blue');
-  colorText(warrior.keysHeld, 30, canvas.height-10, 'blue');
+  // For Debugging
+  // colorText("Keys: ", 10, canvas.height-10, 'blue');
+  // colorText(warrior.keysHeld, 30, canvas.height-10, 'blue');
 
   // CHEAT MODE DISPLAY
   if (cheatMode) {
