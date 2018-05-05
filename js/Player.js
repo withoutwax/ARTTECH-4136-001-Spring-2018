@@ -76,7 +76,6 @@ class Player {
         }
       }
     }
-
     console.log("NO PLAYER START FOUND");
   }
 
@@ -98,9 +97,10 @@ class Player {
       nextX += PLAYER_MOVE_SPEED;
     }
 
-    // CHEAT
-    if (this.controlCheatKey) {
+    // CHEAT MODE
+    if (this.keyCheatKey) {
       this.keysHeld = 9999;
+      cheatMode = true;
     }
 
     var walkIntoTileIndex = getTileIndexAtPixelCoord(nextX, nextY);
@@ -197,6 +197,19 @@ class Player {
           loadLevel(level01_04, walkIntoTileType, 'nav');
         } else if (this.currentMap == 'level01_04') {
           level01_04 = worldGrid;
+          this.currentMap = 'level01_02';
+          loadLevel(level01_02, walkIntoTileType, 'nav');
+        }
+        break;
+      case WORLD_NAVIGATION_03:
+        console.log(walkIntoTileType);
+
+        if (this.currentMap == 'level01_02') {
+          level01_02 = worldGrid;
+          this.currentMap = 'level01_05';
+          loadLevel(level01_05, walkIntoTileType, 'nav');
+        } else if (this.currentMap == 'level01_05') {
+          level01_05 = worldGrid;
           this.currentMap = 'level01_02';
           loadLevel(level01_02, walkIntoTileType, 'nav');
         }

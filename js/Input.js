@@ -64,7 +64,7 @@ function keySet(keyEvent, player, setTo) {
 
 function keyPressed(e) {
   keySet(e, warrior, true);
-  console.log("Key Pressed:", e.keyCode);
+  // console.log("Key Pressed:", e.keyCode);
   e.preventDefault();
 }
 

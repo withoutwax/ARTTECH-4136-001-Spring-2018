@@ -2,6 +2,8 @@ let canvas, canvasContext;
 
 let warrior = new Player();
 
+let cheatMode = false;
+
 window.onload = function() {
   canvas = document.getElementById("gameCanvas");
   canvasContext = canvas.getContext('2d');
@@ -54,6 +56,10 @@ function drawAll() {
   colorText("Keys: ", 10, canvas.height-10, 'blue');
   colorText(warrior.keysHeld, 30, canvas.height-10, 'blue');
 
+  // CHEAT MODE DISPLAY
+  if (cheatMode) {
+    colorText("CHEAT MODE ON (DEBUGGING): ", 10, canvas.height-50, 'blue');
+  }
 
   // if (warrior.keyHeld_Action) {
   //   speech_ready = true;
